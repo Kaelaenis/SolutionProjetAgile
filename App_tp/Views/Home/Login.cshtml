@@ -1,4 +1,4 @@
-﻿
+﻿@model App_tp.Models.User
 @{
     ViewBag.Title = "Login";
 }
@@ -6,5 +6,29 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to setup your login page</p>
+<div class="center-block">
+    @using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
+    {
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="name">Nom</label>
+            <input type="text" id="name" name="name" class="form-control" />
+        </div>
 
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="firstname">Prenom</label>
+            <input type="text" id="firstname" name="firstname" class="form-control" />
+        </div>
+
+        <br />
+        <select id="role" name="role" class="form-control">
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+            <option value="Guest">Guest</option>
+        </select>
+        <br />
+
+        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary mb-4">Sign in</button>
+    }
+</div>

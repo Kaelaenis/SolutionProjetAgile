@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_tp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,19 @@ namespace App_tp.Controllers
     {
         public ActionResult Index()
         {
+            User user = null;
+
+            if (TempData["UserName"] != null)
+            {
+                user = new User
+                {
+                    Name = TempData["UserName"] as string,
+                    FirstName = TempData["UserFirstname"] as string,
+                    Role = TempData["UserRole"] as string
+                };
+            }
+
+            ViewBag.User = user;
             return View();
         }
 
