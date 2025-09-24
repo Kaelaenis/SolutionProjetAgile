@@ -1,9 +1,36 @@
-﻿<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-@{
-    ViewBag.Title = "AddActivity";
-}
+﻿@model List<App_tp.Models.Activity>
 
-<h2>Ajouter une activité</h2>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div class="container mt-3">
-    <button type="button" class="btn btn-primary">Ajouter activité</button>
+    <h2>Ajouter une activité</h2>
+
+    @using (Html.BeginForm("Add", "ActivityBis", FormMethod.Post))
+    {
+        <input type="text" id="activityName" name="activityName" class="form-control mt-3" placeholder="Matière ou Test">
+        <br />
+
+        <select class="attributecolor" name="categoryName" style="color:green">
+            <option value="" class="tagcolor" style="color:#999">-- Choisir une catégorie --</option>
+            <option value="matiere" class="tagcolor" style="color:#999">Matière</option>
+            <option value="examen" class="tagcolor" style="color:#999">Examen</option>
+            <option value="projet" class="tagcolor" style="color:#999">Projet</option>
+            <option value="test" class="tagcolor" style="color:#999">Test</option>
+        </select>
+
+        <br /><br />
+
+
+        <button id="btnAdd" class="btn btn-primary">Ajouter activité</button>
+    }
+
+    <hr />
+
+    <h3>Liste des activités</h3>
+    <ul id="activityList" class="list-group">
+        @foreach (var activity in Model)
+        {
+            <li class="list-group-item">@activity.Name - <strong>@activity.Category</strong></li>
+        }
+    </ul>
 </div>
