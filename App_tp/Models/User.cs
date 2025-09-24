@@ -14,6 +14,13 @@ namespace App_tp.Models
         public string Role { get; set; }
 
         public User() { }
+
+        public User(string name, string firstName, string role)
+        {
+            Name = name;
+            FirstName = firstName;
+            Role = role;
+        }
         public User(int id, string name, string firstName, string role)
         {
             Id = id;
